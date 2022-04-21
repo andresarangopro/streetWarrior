@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "765144242685",
+    "project_id": "streetwarrior-176ad",
+    "storage_bucket": "streetwarrior-176ad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:765144242685:android:629e91849d313a9e15a194",
+        "android_client_info": {
+          "package_name": "com.growth.streetwarrior"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "765144242685-l2orclaas3l5akcbkcql509e1he2hrsk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.growth.streetwarrior",
+            "certificate_hash": "629323a7d82e02377846a1db8d9bc0235c05e351"
+          }
+        },
+        {
+          "client_id": "765144242685-pptfrqo9l68mn4qi54vn00kijvbfjvsu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbQa-rPdm6bYuMcFgSLgUJRjWvPAksrTI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "765144242685-pptfrqo9l68mn4qi54vn00kijvbfjvsu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
