@@ -1,10 +1,6 @@
 
 H
 app/google-services.json,f\d\fd8d34b142d02ec743a8efefefd2c097961666e9
-m
-=app/src/test/java/com/growth/streetwarrior/ExampleUnitTest.kt,a\6\a6b3b33b908dafab0694a24fb0ffb6639bd065e2
-l
-<app/src/main/java/com/growth/streetwarrior/ui/theme/Theme.kt,8\e\8e59a007aa5f62bd447c03130107a00e316561e8
 l
 <app/src/main/java/com/growth/streetwarrior/ui/theme/Shape.kt,e\6\e6e283495985fbba02bb02efda2a9478fcc4a851
 X
@@ -15,9 +11,5 @@ F
 app/proguard-rules.pro,9\e\9e08934d811afe28fbc77aaa3c0d747b94348db9
 ?
 settings.gradle,0\5\05efc8b1657769a27696d478ded1e95f38737233
-I
-buildSrc/build.gradle.kts,d\9\d90b697280fada81e52ec92d24725920f1cb087b
-P
- app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 v
 Fapp/src/main/java/com/growth/streetwarrior/StreetWarriorApplication.kt,5\5\55f6bd56793d945e86e32301955e18a2362b3989
