@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">StreetWarrior</string>
+    <string name="welcome">Hey! Welcome</string>
+    <string name="about">We are an application to connect bikers over the world </string>
+    <string name="get_started">Get Started </string>
+    <string name="already_have_account">I already have an account </string>
 </resources>

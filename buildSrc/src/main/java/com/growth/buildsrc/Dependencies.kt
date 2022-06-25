@@ -14,6 +14,14 @@ object Libs {
         const val insets = "com.google.accompanist:accompanist-insets:$version"
     }
 
+    object ConfigData {
+        const val compileSdkVersion = 32
+        const val minSdkVersion = 21
+        const val targetSdkVersion = 32
+        const val versionCode = 1
+        const val versionName = "1.0"
+    }
+
     object Kotlin {
         private const val version = "1.6.10"
         const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$version"
@@ -36,9 +44,12 @@ object Libs {
 
         object Compose {
             const val snapshot = ""
-            const val version = "1.1.0"
+            const val version = "1.1.1"
+            const val navigationVersion = "2.4.2"
+
 
             const val runtime = "androidx.compose.runtime:runtime:$version"
+            const val navigation = "androidx.navigation:navigation-compose:$navigationVersion"
             const val material = "androidx.compose.material:material:$version"
             const val materialRipple = "androidx.compose.material:material-ripple:$version"
             const val ui = "androidx.compose.ui:ui:$version"
