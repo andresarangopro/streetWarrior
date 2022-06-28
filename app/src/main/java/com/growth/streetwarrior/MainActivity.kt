@@ -14,8 +14,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.growth.streetwarrior.ui.theme.RallyTheme
-import com.growth.streetwarrior.ui.theme.StreetWarriorTheme
+import com.growth.streetwarrior.presentation.ui.theme.RallyTheme
+import com.growth.streetwarrior.presentation.ui.theme.StreetWarriorTheme
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.getValue

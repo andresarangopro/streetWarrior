@@ -1,4 +1,4 @@
-package com.growth.streetwarrior.ui.theme
+package com.growth.streetwarrior.presentation.ui.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes

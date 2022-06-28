@@ -1,6 +1,7 @@
-package com.growth.streetwarrior.ui
+package com.growth.streetwarrior.presentation.ui
 
 sealed class Screen(val route: String){
+    object GetStartedLoginScreen : Screen("get_started_login_screen")
     object MainScreen : Screen("main_screen")
     object DetailScreen : Screen("detail_screen")
 

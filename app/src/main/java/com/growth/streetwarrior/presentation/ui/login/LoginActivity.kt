@@ -1,38 +1,44 @@
-package com.growth.streetwarrior.ui.login
+package com.growth.streetwarrior.presentation.ui.login
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.Image
+import androidx.activity.viewModels
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
+import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.growth.streetwarrior.R
-import com.growth.streetwarrior.ui.Navigation
-import com.growth.streetwarrior.ui.Screen
+import com.growth.streetwarrior.custom.component.ButtonsSocialNetworks
+import com.growth.streetwarrior.custom.component.EmailAndPassword
+import com.growth.streetwarrior.custom.component.ImageResource
+import com.growth.streetwarrior.custom.component.ParamsMailAndPassword
+import com.growth.streetwarrior.presentation.ui.Navigation
+import com.growth.streetwarrior.presentation.ui.Screen
+import com.growth.streetwarrior.presentation.ui.theme.GrayLight
+import com.growth.streetwarrior.presentation.ui.theme.GrayLight_2
+import com.growth.streetwarrior.presentation.ui.theme.White
+import com.growth.streetwarrior.presentation.ui.theme.Yellow
+import dagger.hilt.android.AndroidEntryPoint
 
+
+
+@AndroidEntryPoint
 class LoginActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val viewModel: LoginViewModel by viewModels()
         setContent {
-            Navigation()
+            Navigation(viewModel)
         }
     }
 }
@@ -43,8 +49,8 @@ fun GetStartedScreen(navController: NavController){
         verticalArrangement = Arrangement.Center,
         modifier = Modifier
             .fillMaxWidth()
-            .fillMaxHeight()
-            .wrapContentSize(Alignment.Center)
+            .fillMaxHeight(),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
         ImageResource(
@@ -75,8 +81,8 @@ fun GetStartedScreen(navController: NavController){
         )
         Spacer(modifier = Modifier.height(24.dp))
         Button(
-            onClick = {  
-                navController.navigate(Screen.DetailScreen.withArgs())
+            onClick = {
+                navController.navigate(Screen.MainScreen.route)
             },
             contentPadding = PaddingValues(
                 top = 15.dp,
@@ -84,7 +90,7 @@ fun GetStartedScreen(navController: NavController){
             ),
             colors = ButtonDefaults
             .buttonColors(
-                backgroundColor = colorResource( id = R.color.yellow )),
+                backgroundColor = Yellow),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 20.dp, vertical = 5.dp)
@@ -94,7 +100,7 @@ fun GetStartedScreen(navController: NavController){
         Button(
             onClick = { /*TODO*/ },
             colors = ButtonDefaults
-                .buttonColors(backgroundColor = colorResource( id = R.color.white )),
+                .buttonColors(backgroundColor = White),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 20.dp, vertical = 10.dp),
@@ -110,46 +116,74 @@ fun GetStartedScreen(navController: NavController){
 }
 
 @Composable
-fun ImageResource(id: Int, modifier: Modifier){
-    val image: Painter = painterResource(id = id)
-    Image(
-        painter = image, contentDescription = "logo get started",
-        modifier = modifier
-    )
-}
-
-
-
-
-@Composable
-fun MainScreen(navController: NavController){
-
-    var text by remember{
+fun MainScreen(
+    navController: NavController,
+    viewModel: LoginViewModel
+){
+    var mail by remember{
         mutableStateOf("")
     }
+
+    var pass by remember {
+        mutableStateOf("")
+    }
+
+    val paramsMailAndPass = ParamsMailAndPassword(
+        title = R.string.sign_in,
+        onMailChange = {mail = it},
+        onPassChange = {pass = it}
+    )
 
     Column(
         verticalArrangement = Arrangement.Center,
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 50.dp)
+            .fillMaxHeight()
+            .background(GrayLight)
+
     ) {
-        TextField(value = text, onValueChange = {
-            text = it
-        },
-            modifier = Modifier.fillMaxWidth()
-        )
-        Spacer(modifier = Modifier.height(8.dp))
-        Button(onClick = {
-            navController.navigate(Screen.DetailScreen.withArgs(text))
-        },
-            modifier = Modifier.align(Alignment.End)
+
+        EmailAndPassword(paramsMailAndPass)
+
+        Button(
+            onClick = {
+            },
+            colors = ButtonDefaults
+                .buttonColors(backgroundColor = Yellow),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 20.dp, vertical = 10.dp),
+            contentPadding = PaddingValues(
+                top = 15.dp,
+                bottom = 15.dp,
+            )
         ){
-            Text(text = "To DetailScreen")
+            Text(text = stringResource(id = R.string.sign_in))
+
         }
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        Text(
+            text = stringResource(id = R.string.forgot_password),
+            fontSize = 15.sp,
+            textAlign = TextAlign.Center,
+            color = colorResource(id = R.color.gray),
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentSize(Alignment.Center)
+        )
+
+        Divider(
+            color = GrayLight_2,
+            thickness = 2.dp,
+            modifier = Modifier
+                .padding(horizontal = 24.dp, vertical = 16.dp)
+        )
+
+        ButtonsSocialNetworks()
     }
 }
-
 
 @Composable
 fun DetailScreen(name: String?){
@@ -161,8 +195,3 @@ fun DetailScreen(name: String?){
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun previewDetailScreen(){
-    GetStartedScreen(rememberNavController())
-}

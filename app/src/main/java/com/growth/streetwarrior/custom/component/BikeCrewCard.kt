@@ -1,4 +1,4 @@
-package com.growth.streetwarrior.component
+package com.growth.streetwarrior.custom.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column

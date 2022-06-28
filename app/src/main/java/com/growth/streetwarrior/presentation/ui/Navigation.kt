@@ -1,23 +1,34 @@
-package com.growth.streetwarrior.ui
+package com.growth.streetwarrior.presentation.ui
 
-import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
+import androidx.lifecycle.ViewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.growth.streetwarrior.ui.login.DetailScreen
-import com.growth.streetwarrior.ui.login.GetStartedScreen
-import com.growth.streetwarrior.ui.login.MainScreen
+import com.growth.streetwarrior.presentation.ui.login.DetailScreen
+import com.growth.streetwarrior.presentation.ui.login.GetStartedScreen
+import com.growth.streetwarrior.presentation.ui.login.LoginViewModel
+import com.growth.streetwarrior.presentation.ui.login.MainScreen
 
 
 @Composable
-fun Navigation(){
+fun Navigation(viewModel: ViewModel) {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = Screen.MainScreen.route){
-        composable(route = Screen.MainScreen.route ){
+    NavHost(navController = navController, startDestination = Screen.GetStartedLoginScreen.route){
+
+
+        composable(route = Screen.GetStartedLoginScreen.route ){
             GetStartedScreen(navController = navController)
+        }
+        
+        composable(
+            route = Screen.MainScreen.route ){
+            MainScreen(
+                navController = navController,
+                viewModel = viewModel as LoginViewModel
+            )
         }
 
         composable(
@@ -34,4 +45,6 @@ fun Navigation(){
         }
     }
 }
+
+
 
