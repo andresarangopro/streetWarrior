@@ -1,4 +1,3 @@
-
 import com.growth.buildsrc.Libs
 
 plugins {
@@ -8,11 +7,8 @@ plugins {
     id ("dagger.hilt.android.plugin")
 }
 
-
 android {
-    compileSdk = 31
-
-
+    compileSdk = 32
     defaultConfig {
         applicationId =  "com.growth.streetwarrior"
         minSdk = Libs.ConfigData.minSdkVersion
@@ -54,7 +50,6 @@ android {
 
     composeOptions {
         kotlinCompilerExtensionVersion = Libs.AndroidX.Compose.version
-        kotlinCompilerVersion = "1.5.21"
     }
     packagingOptions {
         resources {
@@ -62,7 +57,6 @@ android {
         }
     }
 }
-
 
 dependencies {
     implementation (Libs.Kotlin.stdlib)
@@ -80,16 +74,14 @@ dependencies {
     implementation (Libs.AndroidX.Compose.toolingPreview)
     implementation (Libs.AndroidX.Compose.ui)
     implementation (Libs.AndroidX.Compose.navigation)
-    implementation (Libs.AndroidX.Compose.materialRipple)
+    implementation (Libs.AndroidX.Compose.materialWindowSize)
     implementation (Libs.AndroidX.Lifecycle.viewModelCompose)
     implementation (Libs.AndroidX.Lifecycle.viewModelKtx)
     implementation (Libs.Hilt.android)
 
     implementation ("androidx.appcompat:appcompat:1.4.2")
-    implementation ("com.google.android.material:material:1.4.0")
     implementation ("androidx.constraintlayout:constraintlayout:2.1.4")
     testImplementation(Libs.JUnit.junit)
-
 
     debugImplementation (Libs.AndroidX.Compose.tooling)
     kapt (Libs.Hilt.compiler)

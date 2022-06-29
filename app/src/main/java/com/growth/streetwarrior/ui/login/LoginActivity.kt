@@ -5,15 +5,15 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -38,7 +38,7 @@ class LoginActivity : ComponentActivity() {
 }
 
 @Composable
-fun GetStartedScreen(navController: NavController){
+fun GetStartedScreen(navController: NavController) {
     Column(
         verticalArrangement = Arrangement.Center,
         modifier = Modifier
@@ -53,7 +53,6 @@ fun GetStartedScreen(navController: NavController){
                 .fillMaxWidth()
                 .wrapContentSize(Alignment.Center)
         )
-        
         Text(
             text = stringResource(id = R.string.welcome),
             fontSize = 20.sp,
@@ -75,7 +74,7 @@ fun GetStartedScreen(navController: NavController){
         )
         Spacer(modifier = Modifier.height(24.dp))
         Button(
-            onClick = {  
+            onClick = {
                 navController.navigate(Screen.DetailScreen.withArgs())
             },
             contentPadding = PaddingValues(
@@ -83,18 +82,17 @@ fun GetStartedScreen(navController: NavController){
                 bottom = 15.dp,
             ),
             colors = ButtonDefaults
-            .buttonColors(
-                backgroundColor = colorResource( id = R.color.yellow )),
+                .buttonColors(containerColor = MaterialTheme.colorScheme.primary),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 20.dp, vertical = 5.dp)
-        ){
+        ) {
             Text(text = stringResource(id = R.string.get_started))
         }
         Button(
             onClick = { /*TODO*/ },
             colors = ButtonDefaults
-                .buttonColors(backgroundColor = colorResource( id = R.color.white )),
+                .buttonColors(containerColor = MaterialTheme.colorScheme.primary),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 20.dp, vertical = 10.dp),
@@ -102,15 +100,14 @@ fun GetStartedScreen(navController: NavController){
                 top = 15.dp,
                 bottom = 15.dp,
             )
-        ){
+        ) {
             Text(text = stringResource(id = R.string.already_have_account))
-
         }
     }
 }
 
 @Composable
-fun ImageResource(id: Int, modifier: Modifier){
+fun ImageResource(id: Int, modifier: Modifier) {
     val image: Painter = painterResource(id = id)
     Image(
         painter = image, contentDescription = "logo get started",
@@ -118,13 +115,9 @@ fun ImageResource(id: Int, modifier: Modifier){
     )
 }
 
-
-
-
 @Composable
-fun MainScreen(navController: NavController){
-
-    var text by remember{
+fun MainScreen(navController: NavController) {
+    var text by remember {
         mutableStateOf("")
     }
 
@@ -134,17 +127,19 @@ fun MainScreen(navController: NavController){
             .fillMaxWidth()
             .padding(horizontal = 50.dp)
     ) {
-        TextField(value = text, onValueChange = {
-            text = it
-        },
+        TextField(
+            value = text, onValueChange = {
+                text = it
+            },
             modifier = Modifier.fillMaxWidth()
         )
         Spacer(modifier = Modifier.height(8.dp))
-        Button(onClick = {
-            navController.navigate(Screen.DetailScreen.withArgs(text))
-        },
+        Button(
+            onClick = {
+                navController.navigate(Screen.DetailScreen.withArgs(text))
+            },
             modifier = Modifier.align(Alignment.End)
-        ){
+        ) {
             Text(text = "To DetailScreen")
         }
     }
@@ -152,17 +147,17 @@ fun MainScreen(navController: NavController){
 
 
 @Composable
-fun DetailScreen(name: String?){
+fun DetailScreen(name: String?) {
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier.fillMaxSize()
-    ){
+    ) {
         Text(text = "Hello, $name")
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun previewDetailScreen(){
+fun previewDetailScreen() {
     GetStartedScreen(rememberNavController())
 }
