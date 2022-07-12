@@ -1,25 +1,31 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
 package com.growth.streetwarrior
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.growth.streetwarrior.presentation.ui.theme.RallyTheme
-import com.growth.streetwarrior.presentation.ui.theme.StreetWarriorTheme
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
+import com.growth.streetwarrior.ui.theme.StreetWarriorTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -35,12 +41,10 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun StreetWarriorApp(){
-    RallyTheme {
+    StreetWarriorTheme {
         val allScreens = StreetWarriorsScreen.values().toList()
         var currentScreen by rememberSaveable { mutableStateOf(StreetWarriorsScreen.BikeCrews) }
-        Scaffold(
-
-        ) { innerPadding ->
+        Scaffold() { innerPadding ->
             Box(Modifier.padding(innerPadding)) {
                 currentScreen.content(
                     onScreenChange = { screen ->

@@ -6,10 +6,15 @@ import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -44,7 +49,7 @@ class LoginActivity : ComponentActivity() {
 }
 
 @Composable
-fun GetStartedScreen(navController: NavController){
+fun GetStartedScreen(navController: NavController) {
     Column(
         verticalArrangement = Arrangement.Center,
         modifier = Modifier
@@ -59,7 +64,6 @@ fun GetStartedScreen(navController: NavController){
                 .fillMaxWidth()
                 .wrapContentSize(Alignment.Center)
         )
-        
         Text(
             text = stringResource(id = R.string.welcome),
             fontSize = 20.sp,
@@ -89,18 +93,17 @@ fun GetStartedScreen(navController: NavController){
                 bottom = 15.dp,
             ),
             colors = ButtonDefaults
-            .buttonColors(
-                backgroundColor = Yellow),
+                .buttonColors(containerColor = MaterialTheme.colorScheme.primary),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 20.dp, vertical = 5.dp)
-        ){
+        ) {
             Text(text = stringResource(id = R.string.get_started))
         }
         Button(
             onClick = { /*TODO*/ },
             colors = ButtonDefaults
-                .buttonColors(backgroundColor = White),
+                .buttonColors(containerColor = MaterialTheme.colorScheme.primary),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 20.dp, vertical = 10.dp),
@@ -108,9 +111,8 @@ fun GetStartedScreen(navController: NavController){
                 top = 15.dp,
                 bottom = 15.dp,
             )
-        ){
+        ) {
             Text(text = stringResource(id = R.string.already_have_account))
-
         }
     }
 }
@@ -186,12 +188,17 @@ fun MainScreen(
 }
 
 @Composable
-fun DetailScreen(name: String?){
+fun DetailScreen(name: String?) {
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier.fillMaxSize()
-    ){
+    ) {
         Text(text = "Hello, $name")
     }
 }
 
+@Preview(showBackground = true)
+@Composable
+fun previewDetailScreen() {
+    GetStartedScreen(rememberNavController())
+}
