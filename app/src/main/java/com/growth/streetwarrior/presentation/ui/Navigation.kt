@@ -7,10 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.growth.streetwarrior.presentation.ui.login.DetailScreen
-import com.growth.streetwarrior.presentation.ui.login.GetStartedScreen
-import com.growth.streetwarrior.presentation.ui.login.LoginViewModel
-import com.growth.streetwarrior.presentation.ui.login.MainScreen
+import com.growth.streetwarrior.presentation.ui.login.*
 
 
 @Composable
@@ -22,7 +19,7 @@ fun Navigation(viewModel: ViewModel) {
         composable(route = Screen.GetStartedLoginScreen.route ){
             GetStartedScreen(navController = navController)
         }
-        
+
         composable(
             route = Screen.MainScreen.route ){
             MainScreen(
@@ -30,6 +27,15 @@ fun Navigation(viewModel: ViewModel) {
                 viewModel = viewModel as LoginViewModel
             )
         }
+
+        composable(
+            route = Screen.CreateAccountScreen.route){
+            CreateNewAccountScreen(
+                navController = navController,
+                viewModel = viewModel as LoginViewModel
+            )
+         }
+
 
         composable(
             route = Screen.DetailScreen.route + "/{name}",

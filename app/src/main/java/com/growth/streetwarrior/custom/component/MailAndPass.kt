@@ -1,9 +1,10 @@
 package com.growth.streetwarrior.custom.component
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
-import androidx.compose.material.TextFieldDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -13,7 +14,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.growth.streetwarrior.R
-import com.growth.streetwarrior.presentation.ui.theme.White
 
 
 data class ParamsMailAndPassword(
@@ -55,7 +55,7 @@ fun EmailAndPassword(
             .fillMaxWidth()
             .padding(horizontal = 24.dp, vertical = 8.dp),
         colors = TextFieldDefaults.textFieldColors(
-            backgroundColor = White
+            containerColor = MaterialTheme.colorScheme.onSecondary
         ),
         placeholder = {
             Text(text = stringResource(id = R.string.email_adress))
@@ -70,7 +70,7 @@ fun EmailAndPassword(
             .fillMaxWidth()
             .padding(horizontal = 24.dp, vertical = 8.dp),
         colors = TextFieldDefaults.textFieldColors(
-            backgroundColor = White
+            containerColor = MaterialTheme.colorScheme.onSecondary
         ),
         placeholder = {
             Text(text = stringResource(id = R.string.password))
