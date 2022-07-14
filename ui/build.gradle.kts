@@ -51,6 +51,7 @@ dependencies {
     implementation (Libs.AndroidX.Compose.materialWindowSize)
     implementation (Libs.AndroidX.Lifecycle.viewModelCompose)
     implementation (Libs.AndroidX.Lifecycle.viewModelKtx)
+    implementation(project(mapOf("path" to ":domain")))
 
     testImplementation(Libs.JUnit.junit)
 }

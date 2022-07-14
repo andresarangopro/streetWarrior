@@ -1,7 +1,16 @@
 <resources>
     <string name="app_name">StreetWarrior</string>
     <string name="welcome">Hey! Welcome</string>
-    <string name="about">We are an application to connect bikers and crews all over the world</string>
+    <string name="about">We are an application to connect bikers over the world </string>
+    <string name="create_an_account">Create an account</string>
     <string name="get_started">Get Started </string>
-    <string name="already_have_account">I already have an account </string>
+    <string name="already_have_account">Already have an account? </string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="email_adress">Email Adress</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="create_account">Create account</string>
+    <string name="continue_with_google">Continue with Google</string>
+    <string name="continue_with_facebook">Continue with Facebook</string>
+    <string name="continue_with_apple">Continue with Apple</string>
 </resources>
