@@ -13,17 +13,32 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.SavedStateHandle
+import androidx.navigation.NamedNavArgument
+import androidx.navigation.NavType
+import androidx.navigation.navArgument
 import com.growth.streetwarrior.R
 import com.growth.streetwarrior.custom.component.ButtonsSocialNetworks
 import com.growth.streetwarrior.custom.component.EmailAndPassword
 import com.growth.streetwarrior.custom.component.ParamsMailAndPassword
+import com.growth.streetwarrior.presentation.KEY_CONTENT_PAGE_INDEX
 import com.growth.streetwarrior.presentation.navigation.NavRoute
+import com.growth.streetwarrior.presentation.navigation.getOrThrow
+import com.growth.streetwarrior.presentation.ui.login.createAccount.CreateAccountRoute
 import com.growth.streetwarrior.presentation.ui.theme.GrayLight
 import com.growth.streetwarrior.presentation.ui.theme.GrayLight_2
 import com.growth.streetwarrior.presentation.ui.theme.StreetWarriorTheme
 
 object SignInRoute : NavRoute<SignInViewModel> {
-    override val route = "signIn/"
+    override val route = "signIn/{$KEY_CONTENT_PAGE_INDEX}/"
+
+    fun get(index: Int): String = route.replace("{$KEY_CONTENT_PAGE_INDEX}", "$index")
+
+    fun getIndexFrom(savedStateHandle: SavedStateHandle) =
+        savedStateHandle.getOrThrow<Int>(KEY_CONTENT_PAGE_INDEX)
+
+    override fun getArguments(): List<NamedNavArgument> = listOf(
+        navArgument(KEY_CONTENT_PAGE_INDEX) { type = NavType.IntType })
 
     @Composable
     override fun viewModel(): SignInViewModel = hiltViewModel()

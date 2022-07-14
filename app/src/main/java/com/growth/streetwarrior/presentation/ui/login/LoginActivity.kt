@@ -15,7 +15,6 @@ class LoginActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val viewModel: LoginViewModel by viewModels()
         setContent {
             val navController = rememberNavController()
             StreetWarriorTheme() {

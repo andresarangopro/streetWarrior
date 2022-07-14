@@ -29,14 +29,14 @@ object HomeRoute : NavRoute<GetStartedViewModel> {
     override fun viewModel(): GetStartedViewModel = hiltViewModel()
 
     @Composable
-    override fun Content(viewModel: GetStartedViewModel) = ContentPage(viewModel::onStartClicked)
+    override fun Content(viewModel: GetStartedViewModel) = ContentPage(viewModel)
 }
 
 
 
 @Composable
 fun ContentPage(
-    onStartClicked: () -> Unit
+    getStartedViewModel: GetStartedViewModel
 ) {
     StreetWarriorTheme {
         Column(
@@ -75,8 +75,7 @@ fun ContentPage(
             Spacer(modifier = Modifier.height(24.dp))
             Button(
                 onClick = {
-                    onStartClicked()
-                    // navController.navigate(Screen.CreateAccountScreen.route)
+                    getStartedViewModel.onStartClicked()
                 },
                 contentPadding = PaddingValues(
                     top = 15.dp,
@@ -92,7 +91,7 @@ fun ContentPage(
             }
             Button(
                 onClick = {
-                    //  navController.navigate(Screen.MainScreen.route)
+                    getStartedViewModel.toSingInScreen()
                 },
                 colors = ButtonDefaults
                     .buttonColors(containerColor = MaterialTheme.colorScheme.primary),
@@ -114,5 +113,5 @@ fun ContentPage(
 @Preview(showBackground = true)
 @Composable
 fun previewScreen() {
-    ContentPage({})
+    ContentPage(hiltViewModel())
 }

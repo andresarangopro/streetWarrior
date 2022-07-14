@@ -7,6 +7,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.growth.streetwarrior.presentation.ui.login.createAccount.CreateAccountRoute
+import com.growth.streetwarrior.presentation.ui.login.signIn.SignInRoute
 import java.util.*
 
 
@@ -26,6 +27,9 @@ fun NavigationComponent(navHostController: NavHostController, paddingValues: Pad
     ) {
         HomeRoute.composable(this, navHostController)
         CreateAccountRoute.composable(
+            this, navHostController
+        )
+        SignInRoute.composable(
             this, navHostController
         )
     }
