@@ -1,6 +1,6 @@
 package com.growth.streetwarrior.presentation.navigation.di
 
-import com.growth.streetwarrior.presentation.MyRouteNavigator
+import com.growth.streetwarrior.presentation.StreetRouteNavigator
 import com.growth.streetwarrior.presentation.RouteNavigator
 import dagger.Module
 import dagger.Provides
@@ -14,5 +14,5 @@ class ViewModelModule {
 
     @Provides
     @ViewModelScoped
-    fun bindRouteNavigator(): RouteNavigator = MyRouteNavigator()
+    fun bindRouteNavigator(): RouteNavigator = StreetRouteNavigator()
 }

@@ -8,7 +8,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class GetStartedViewModel@Inject constructor(
+class GetStartedViewModel @Inject constructor(
     private val routeNavigator: RouteNavigator
 ): ViewModel(), RouteNavigator by routeNavigator {
     fun onStartClicked(){

@@ -1,5 +1,6 @@
 package com.growth.streetwarrior.custom.component
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -17,7 +18,7 @@ import com.growth.streetwarrior.R
 
 
 data class ParamsMailAndPassword(
-    val title: Int,
+    @StringRes val title: Int,
     val onMailChange : (String) -> Unit,
     val onPassChange : (String) -> Unit
 )
