@@ -1,4 +1,4 @@
-package com.growth.streetwarrior.component
+package com.growth.streetwarrior.custom.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -15,8 +15,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.growth.streetwarrior.Message
 import com.growth.streetwarrior.R
+
+
+data class Message(val id:String, val message:String)
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -31,8 +33,8 @@ fun ProductCard(
                     .size(40.dp)
                     .clip(CircleShape))
             Column{
-                Text(text = "Hello ${msg.author}")
-                Text(text = "Hello ${msg.body}")
+                Text(text = "Hello ${msg.id}")
+                Text(text = "Hello ${msg.message}")
             }
         }
     }
