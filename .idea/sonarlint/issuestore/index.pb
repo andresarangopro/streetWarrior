@@ -9,5 +9,15 @@ F
 app/proguard-rules.pro,9\e\9e08934d811afe28fbc77aaa3c0d747b94348db9
 ?
 settings.gradle,0\5\05efc8b1657769a27696d478ded1e95f38737233
-†
-Vapp/src/main/java/com/growth/streetwarrior/presentation/ui/theme/StreetWarriorTheme.kt,f\9\f97272ca7d09230771b86a63aaa929793ce20f4f
+y
+Iapp/src/main/java/com/growth/streetwarrior/presentation/ui/theme/Shape.kt,d\d\dd43d0e0d0b0ec6b017b04bd46a17767ccaf576c
+I
+buildSrc/build.gradle.kts,d\9\d90b697280fada81e52ec92d24725920f1cb087b
+{
+Kapp/src/main/java/com/growth/streetwarrior/custom/component/BikeCrewCard.kt,6\2\6271d17dfd7837d551306b66aa8198816279f823
+„
+Tapp/src/main/java/com/growth/streetwarrior/custom/component/ButtonsSocialNetworks.kt,2\5\25d39fab6b35f1be9b136449adb4e4c1d3f62f52
+y
+Iapp/src/main/java/com/growth/streetwarrior/presentation/ui/theme/Color.kt,3\b\3b096ea61cbcb6ee0251e75ef304b96555c72c89
+v
+Fapp/src/main/java/com/growth/streetwarrior/custom/component/Buttons.kt,9\b\9b897c83820a47ff9948b7624fe8246aaae9cd01

@@ -47,6 +47,8 @@ object Libs {
             const val version = "1.1.1"
             const val material3Version = "1.0.0-alpha13"
             const val navigationVersion = "2.4.2"
+            const val hiltVersion = "1.0.0"
+            const val hiltCompilerVersion = "1.0.0-alpha01"
 
 
             const val runtime = "androidx.compose.runtime:runtime:$version"
@@ -61,6 +63,8 @@ object Libs {
             const val animation = "androidx.compose.animation:animation:$version"
             const val uiTest = "androidx.compose.ui:ui-test-junit4:$version"
             const val uiTestManifest = "androidx.compose.ui:ui-test-manifest:$version"
+            const val hiltNavigationCompose = "androidx.hilt:hilt-navigation-compose:$hiltVersion"
+            const val hiltCompiler = "androidx.hilt:hilt-compiler:$hiltCompilerVersion"
         }
 
         object Lifecycle {

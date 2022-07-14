@@ -76,6 +76,7 @@ dependencies {
     implementation (Libs.AndroidX.Compose.ui)
     implementation (Libs.AndroidX.Compose.navigation)
     implementation (Libs.AndroidX.Compose.materialWindowSize)
+    implementation (Libs.AndroidX.Compose.hiltNavigationCompose)
     implementation (Libs.AndroidX.Lifecycle.viewModelCompose)
     implementation (Libs.AndroidX.Lifecycle.viewModelKtx)
     implementation (Libs.Hilt.android)
@@ -86,6 +87,7 @@ dependencies {
 
     debugImplementation (Libs.AndroidX.Compose.tooling)
     kapt (Libs.Hilt.compiler)
+    kapt (Libs.AndroidX.Compose.hiltCompiler)
 
     debugImplementation (Libs.AndroidX.Compose.uiTestManifest)
 
