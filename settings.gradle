@@ -8,3 +8,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "StreetWarrior"
 include ':app'
+include ':ui'
+include ':data'
+include ':domain'

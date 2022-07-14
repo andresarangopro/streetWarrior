@@ -11,12 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StreetWarrior" >
         <activity
-            android:name=".ui.login.LoginActivity"
+            android:name="com.growth.streetwarrior.ui.screens.auth.AuthActivity"
             android:exported="true"
             android:theme="@style/Theme.StreetWarrior.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
