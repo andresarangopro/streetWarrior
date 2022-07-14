@@ -5,7 +5,7 @@ import com.growth.streetwarrior.home.BikeCrewsBody
 
 
 enum class StreetWarriorsScreen(
-    val body:@Composable ((String)-> Unit) -> Unit
+    val body: @Composable ((String)-> Unit) -> Unit
 ) {
     BikeCrews(
         body = { BikeCrewsBody()}

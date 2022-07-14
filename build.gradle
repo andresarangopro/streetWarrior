@@ -3,8 +3,6 @@ import com.growth.buildsrc.Libs
 import com.growth.buildsrc.Urls
 import com.growth.buildsrc.Versions
 
-
-
 buildscript {
     repositories {
         google()

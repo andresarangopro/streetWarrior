@@ -6,7 +6,7 @@ sealed class Screen(val route: String){
     object CreateAccountScreen : Screen("create_account_screen")
     object DetailScreen : Screen("detail_screen")
 
-    fun withArgs(vararg args: String): String{
+    fun withArgs(vararg args: String): String {
         return buildString {
             append(route)
             args.forEach { arg ->
