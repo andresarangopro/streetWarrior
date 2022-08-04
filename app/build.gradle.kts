@@ -79,6 +79,8 @@ dependencies {
     implementation (Libs.AndroidX.Compose.hiltNavigationCompose)
     implementation (Libs.AndroidX.Lifecycle.viewModelCompose)
     implementation (Libs.AndroidX.Lifecycle.viewModelKtx)
+    implementation (Libs.Firebase.firebaseAuth)
+    implementation (Libs.Firebase.serviceAuth)
     implementation (Libs.Hilt.android)
 
     implementation ("androidx.appcompat:appcompat:1.4.2")

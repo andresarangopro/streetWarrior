@@ -3,15 +3,25 @@ package com.growth.buildsrc
 
 object Versions {
     const val ktLint = "0.42.1"
+    const val googleServices = "4.3.4"
 }
 
 object Libs {
     const val androidGradlePlugin = "com.android.tools.build:gradle:7.1.0"
     const val ktLint = "com.pinterest:ktlint:${Versions.ktLint}"
-    
+    const val googleServices = "com.google.gms:google-services:${Versions.googleServices}"
+
     object Accompanist {
         const val version = "0.23.0"
         const val insets = "com.google.accompanist:accompanist-insets:$version"
+    }
+
+    object Firebase {
+        const val firebaseAuthVersion = "20.0.0"
+        const val serviceAuthVersion = "18.1.0"
+
+        const val firebaseAuth  = "com.google.firebase:firebase-auth:$firebaseAuthVersion"
+        const val serviceAuth  = "com.google.android.gms:play-services-auth:$serviceAuthVersion"
     }
 
     object ConfigData {

@@ -11,8 +11,6 @@ F
 settings.gradle,0\5\05efc8b1657769a27696d478ded1e95f38737233
 y
 Iapp/src/main/java/com/growth/streetwarrior/presentation/ui/theme/Shape.kt,d\d\dd43d0e0d0b0ec6b017b04bd46a17767ccaf576c
-I
-buildSrc/build.gradle.kts,d\9\d90b697280fada81e52ec92d24725920f1cb087b
 {
 Kapp/src/main/java/com/growth/streetwarrior/custom/component/BikeCrewCard.kt,6\2\6271d17dfd7837d551306b66aa8198816279f823
 „
@@ -27,12 +25,6 @@ v
 Fapp/src/main/java/com/growth/streetwarrior/StreetWarriorApplication.kt,5\5\55f6bd56793d945e86e32301955e18a2362b3989
 r
 Bapp/src/main/java/com/growth/streetwarrior/StreetWarriorsScreen.kt,b\a\babbfeb66e7d1bcac4356e7f134f18360bfb07f1
-j
-:buildSrc/src/main/java/com/growth/buildsrc/Dependencies.kt,8\c\8c32f67f38d0210be63adb342e34be31842b3828
-<
-build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
-D
-app/build.gradle.kts,d\2\d2a4383452aad84a18429a5844d31330a012a9e6
 t
 Dapp/src/main/java/com/growth/streetwarrior/presentation/ui/Screen.kt,f\d\fd1d434967051d55f0958c3abb0a2902b552f346
 ˆ
