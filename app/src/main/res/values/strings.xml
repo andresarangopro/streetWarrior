@@ -8,9 +8,11 @@
     <string name="forgot_password">Forgot password?</string>
     <string name="email_adress">Email Adress</string>
     <string name="password">Password</string>
+    <string name="verify_password">Verify Password</string>
     <string name="sign_in">Sign In</string>
     <string name="create_account">Create account</string>
     <string name="continue_with_google">Continue with Google</string>
     <string name="continue_with_facebook">Continue with Facebook</string>
     <string name="continue_with_apple">Continue with Apple</string>
+
 </resources>

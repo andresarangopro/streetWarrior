@@ -40,5 +40,13 @@ android {
 dependencies {
     implementation("androidx.core:core-ktx:1.7.0")
     implementation(project(mapOf("path" to ":domain")))
+    implementation (platform(Libs.Firebase.firebaseBoom))
+    implementation (Libs.Firebase.firebaseAuth)
+    implementation (Libs.Firebase.serviceAuth)
+    implementation (Libs.Firebase.firestore)
+    implementation (Libs.Kotlin.Coroutines.android)
+    implementation (Libs.Kotlin.Coroutines.core)
+    implementation (Libs.Kotlin.Coroutines.playServices)
+    implementation (Libs.Hilt.android)
     testImplementation(Libs.JUnit.junit)
 }

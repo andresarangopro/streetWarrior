@@ -1,28 +1,28 @@
 package com.growth.streetwarrior.presentation.ui.login.createAccount
 
+
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.growth.streetwarrior.model.Response
+import com.growth.streetwarrior.presentation.BaseViewModel
 import com.growth.streetwarrior.presentation.RouteNavigator
+import com.growth.streetwarrior.presentation.ui.login.signIn.SignInRoute
+import com.growth.streetwarrior.usecases.CreateAccountWithEmailAndPasswordUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-
-
-data class CreateAccountViewModelState(
-    val title: String,
-    val counterValue: Int,
-)
 
 @HiltViewModel
 class CreateAccountViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     private val routeNavigator: RouteNavigator,
-) : ViewModel(), RouteNavigator by routeNavigator { // prefer delegation over inheritance
+    val createAccountWithEmailAndPasswordUseCase: CreateAccountWithEmailAndPasswordUseCase
+) : BaseViewModel<EventsCreateAccountViewModel,
+        StatesCreateAccountViewModel>(), RouteNavigator by routeNavigator { // prefer delegation over inheritance
 
     private val index = CreateAccountRoute.getIndexFrom(savedStateHandle)
 
@@ -30,19 +30,26 @@ class CreateAccountViewModel @Inject constructor(
         CreateAccountViewModelState(title = "Page $index", counterValue = 0)
     )
 
-    fun onNextClicked() {
-        navigateToNextPage()
-    }
+    fun createAccount(params: ParamsCreateAccountViewModel) = viewModelScope.launch {
+        Log.d("success", "success ${params.mail} ${params.password}")
+        createAccountWithEmailAndPasswordUseCase.run(params.mail,
+            params.password).collect{ response ->
+                when(response){
+                    is Response.Loading ->{}
+                    is Response.Success ->{
+                        Log.d("success", "success")
+                    }
+                    is Response.Error ->{
+                        Log.d("err", "${response.e?.message}")
+                    }
+                }
 
-    fun onUpClicked() {
-        navigateUp()
-    }
-
-    fun onNextWithDelayClicked() {
-        viewModelScope.launch {
-            delay(4000)
-            navigateToNextPage()
         }
+    }
+
+
+    fun toSingInScreen(){
+        navigateToRoute(SignInRoute.get(0))
     }
 
     private fun navigateToNextPage() {
@@ -51,6 +58,15 @@ class CreateAccountViewModel @Inject constructor(
 
     fun onIncreaseCounterClicked() {
         viewState = viewState.copy(counterValue = viewState.counterValue + 1)
+    }
+
+    override fun manageEvent(event: EventsCreateAccountViewModel) {
+        when(event){
+            is EventsCreateAccountViewModel.CreateAccountWithEmailAndPass->{
+                createAccount(event.params)
+            }
+            else ->{}
+        }
     }
 }
 

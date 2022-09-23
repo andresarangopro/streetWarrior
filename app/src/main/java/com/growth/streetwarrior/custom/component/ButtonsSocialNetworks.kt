@@ -9,13 +9,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.growth.streetwarrior.R
-import com.growth.streetwarrior.presentation.ui.theme.White
 
 @Composable
-fun ButtonsSocialNetworks(){
+fun ButtonsSocialNetworks(loginWithGoogle:()-> Unit,
+                          loginWithFacebook:()-> Unit) {
 
-   Button(
-        onClick = { /*TODO*/ },
+    Button(
+        onClick = loginWithGoogle,
         colors = ButtonDefaults
             .buttonColors(containerColor = MaterialTheme.colorScheme.onSecondary),
         modifier = Modifier
@@ -31,14 +31,15 @@ fun ButtonsSocialNetworks(){
             contentDescription = "Favorite",
             modifier = Modifier
                 .size(20.dp)
-                .padding(end=8.dp)
+                .padding(end = 8.dp)
         )
         Text(text = stringResource(id = R.string.continue_with_google))
 
     }
 
+  /*
     Button(
-        onClick = { /*TODO*/ },
+        onClick = loginWithGoogle1,
         colors = ButtonDefaults
             .buttonColors(containerColor = MaterialTheme.colorScheme.onSecondary),
         modifier = Modifier
@@ -80,7 +81,7 @@ fun ButtonsSocialNetworks(){
         )
         Text(text = stringResource(id = R.string.continue_with_apple))
 
-    }
+    }*/
 }
 
 @Preview
@@ -89,6 +90,5 @@ fun showButtons(){
    Column(
 
    ){
-       ButtonsSocialNetworks()
    }
 }

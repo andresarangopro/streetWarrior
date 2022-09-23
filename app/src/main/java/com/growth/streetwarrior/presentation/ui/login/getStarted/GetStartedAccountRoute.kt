@@ -1,5 +1,6 @@
 package com.growth.streetwarrior.presentation.navigation
 
+
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -31,7 +32,6 @@ object HomeRoute : NavRoute<GetStartedViewModel> {
     @Composable
     override fun Content(viewModel: GetStartedViewModel) = ContentPage(viewModel)
 }
-
 
 
 @Composable
@@ -70,6 +70,7 @@ fun ContentPage(
                 color = colorResource(id = R.color.gray),
                 modifier = Modifier
                     .fillMaxWidth()
+                    .padding(15.dp, 0.dp)
                     .wrapContentSize(Alignment.Center)
             )
             Spacer(modifier = Modifier.height(24.dp))
