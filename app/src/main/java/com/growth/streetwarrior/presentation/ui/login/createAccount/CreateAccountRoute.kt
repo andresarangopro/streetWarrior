@@ -1,5 +1,6 @@
 package com.growth.streetwarrior.presentation.ui.login.createAccount
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -48,7 +49,7 @@ object CreateAccountRoute : NavRoute<CreateAccountViewModel> {
     override fun viewModel(): CreateAccountViewModel = hiltViewModel()
 
     @Composable
-    override fun Content(viewModel: CreateAccountViewModel)  = ContentPage(viewModel)
+    override fun Content(viewModel: CreateAccountViewModel) = ContentPage(viewModel)
 }
 
 
@@ -80,7 +81,9 @@ fun ContentPage(
 
         ) {
 
-            EmailAndPassword(paramsMailAndPass)
+            EmailAndPassword(
+                paramsMailAndPass
+            )
 
             Button(
                 onClick = {
@@ -118,7 +121,11 @@ fun ContentPage(
                     .padding(horizontal = 24.dp, vertical = 16.dp)
             )
 
-            ButtonsSocialNetworks()
+            ButtonsSocialNetworks(
+                { },
+                {},
+                {}
+            )
         }
     }
 }
@@ -126,7 +133,7 @@ fun ContentPage(
 @Preview(showBackground = true)
 @Composable
 fun previewcreen() {
-    ContentPage(hiltViewModel())
+
 }
 
 

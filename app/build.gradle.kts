@@ -6,6 +6,7 @@ plugins {
     id ("kotlin-kapt")
     id ("dagger.hilt.android.plugin")
     id("kotlin-parcelize")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -50,7 +51,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = Libs.AndroidX.Compose.version
+        kotlinCompilerExtensionVersion = Libs.AndroidX.Compose.versionCompiler
     }
     packagingOptions {
         resources {
@@ -77,14 +78,22 @@ dependencies {
     implementation (Libs.AndroidX.Compose.navigation)
     implementation (Libs.AndroidX.Compose.materialWindowSize)
     implementation (Libs.AndroidX.Compose.hiltNavigationCompose)
-    implementation (Libs.AndroidX.Lifecycle.viewModelCompose)
-    implementation (Libs.AndroidX.Lifecycle.viewModelKtx)
-    implementation (Libs.Firebase.firebaseAuth)
+
+    implementation (platform(Libs.Firebase.firebaseCommon))
     implementation (Libs.Firebase.serviceAuth)
+    implementation (Libs.Firebase.firebaseAuth)
+    implementation (Libs.Firebase.firebaseAuthUI)
+    implementation (Libs.Firebase.firestore)
+    implementation (Libs.AndroidX.Lifecycle.viewModelCompose)
     implementation (Libs.Hilt.android)
+    implementation (Libs.AndroidX.Lifecycle.liveData)
+
 
     implementation ("androidx.appcompat:appcompat:1.4.2")
     implementation ("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation(project(mapOf("path" to ":domain")))
+    implementation(project(mapOf("path" to ":data")))
+    implementation("com.google.android.material:material:1.4.0")
     testImplementation(Libs.JUnit.junit)
 
     debugImplementation (Libs.AndroidX.Compose.tooling)
@@ -101,7 +110,7 @@ dependencies {
     androidTestImplementation (Libs.AndroidX.Test.Ext.junit)
     androidTestImplementation (Libs.Kotlin.Coroutines.test)
     androidTestImplementation (Libs.AndroidX.Compose.uiTest)
-    androidTestImplementation (Libs.Hilt.android)
     androidTestImplementation (Libs.Hilt.testing)
+    androidTestImplementation (Libs.Hilt.android)
     kaptAndroidTest (Libs.Hilt.compiler)
 }

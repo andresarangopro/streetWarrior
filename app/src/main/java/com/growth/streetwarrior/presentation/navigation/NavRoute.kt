@@ -1,5 +1,6 @@
 package com.growth.streetwarrior.presentation.navigation
 
+import android.app.Activity
 import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -15,15 +16,12 @@ import com.growth.streetwarrior.presentation.RouteNavigator
 /**
  * A route the app can navigate to.
  */
-interface NavRoute<T : RouteNavigator> {
-
-    val route: String
-
+interface NavRoute<T : RouteNavigator>: Nav {
     /**
      * Returns the screen's content.
      */
     @Composable
-    fun Content(viewModel: T)
+    fun Content(viewModel: T){}
 
     /**
      * Returns the screen's ViewModel. Needs to be overridden so that Hilt can generate code for the factory for the ViewModel class.
@@ -32,18 +30,12 @@ interface NavRoute<T : RouteNavigator> {
     fun viewModel(): T
 
     /**
-     * Override when this page uses arguments.
-     *
-     * We do it here and not in the [NavigationComponent to keep it centralized]
-     */
-    fun getArguments(): List<NamedNavArgument> = listOf()
-
-    /**
      * Generates the composable for this route.
      */
     fun composable(
         builder: NavGraphBuilder,
         navHostController: NavHostController
+
     ) {
         builder.composable(route, getArguments()) {
             val viewModel = viewModel()
@@ -58,10 +50,22 @@ interface NavRoute<T : RouteNavigator> {
         }
     }
 
+}
+
+
+interface Nav{
+    val route: String
+    /**
+     * Override when this page uses arguments.
+     *
+     * We do it here and not in the [NavigationComponent to keep it centralized]
+     */
+    fun getArguments(): List<NamedNavArgument> = listOf()
+
     /**
      * Navigates to viewState.
      */
-    private fun updateNavigationState(
+     fun updateNavigationState(
         navHostController: NavHostController,
         navigationState: NavigationState,
         onNavigated: (navState: NavigationState) -> Unit,
@@ -82,6 +86,7 @@ interface NavRoute<T : RouteNavigator> {
             }
         }
     }
+
 }
 
 fun <T> SavedStateHandle.getOrThrow(key: String): T =

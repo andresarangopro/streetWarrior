@@ -9,13 +9,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.growth.streetwarrior.R
-import com.growth.streetwarrior.presentation.ui.theme.White
 
 @Composable
-fun ButtonsSocialNetworks(){
+fun ButtonsSocialNetworks(loginWithGoogle:()-> Unit,
+                          loginWithGoogle1:()-> Unit,
+                          loginWithGoogle2:()-> Unit) {
 
    Button(
-        onClick = { /*TODO*/ },
+        onClick =  loginWithGoogle,
         colors = ButtonDefaults
             .buttonColors(containerColor = MaterialTheme.colorScheme.onSecondary),
         modifier = Modifier
@@ -38,7 +39,7 @@ fun ButtonsSocialNetworks(){
     }
 
     Button(
-        onClick = { /*TODO*/ },
+        onClick = loginWithGoogle1,
         colors = ButtonDefaults
             .buttonColors(containerColor = MaterialTheme.colorScheme.onSecondary),
         modifier = Modifier
@@ -89,6 +90,5 @@ fun showButtons(){
    Column(
 
    ){
-       ButtonsSocialNetworks()
    }
 }
