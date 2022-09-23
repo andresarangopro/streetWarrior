@@ -73,6 +73,7 @@ object Libs {
 
 
             const val runtime = "androidx.compose.runtime:runtime:$version"
+            const val runtimeLiveData = "androidx.compose.runtime:runtime-livedata:$version"
             const val navigation = "androidx.navigation:navigation-compose:$navigationVersion"
             const val material = "androidx.compose.material3:material3:$material3Version"
             const val materialWindowSize = "androidx.compose.material3:material3-window-size-class:$material3Version"

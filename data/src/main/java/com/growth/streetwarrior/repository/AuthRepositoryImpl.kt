@@ -1,13 +1,17 @@
 package com.growth.streetwarrior.repository
 
+
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthCredential
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuth.AuthStateListener
 import com.google.firebase.firestore.FieldValue.serverTimestamp
 import com.google.firebase.firestore.FirebaseFirestore
+import com.growth.streetwarrior.model.Response
 import com.growth.streetwarrior.model.Response.*
 import com.growth.streetwarrior.repository.Constants.CREATED_AT
 import com.growth.streetwarrior.repository.Constants.DISPLAY_NAME
@@ -18,6 +22,7 @@ import com.growth.streetwarrior.repository.Constants.SIGN_IN_REQUEST
 import com.growth.streetwarrior.repository.Constants.SIGN_UP_REQUEST
 import com.growth.streetwarrior.repository.Constants.USERS_REF
 import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
@@ -60,7 +65,17 @@ class AuthRepositoryImpl  @Inject constructor(
         }
     }
 
-    override suspend fun firebaseSignInWithGoogle(googleCredential: AuthCredential) = flow {
+    override suspend fun signUpWithGoogle() = flow {
+        try {
+            emit(Loading)
+            val result = signInClient.signInIntent
+            emit(Success(result))
+        } catch (e: Exception) {
+            emit(Error(e))
+        }
+    }
+
+    override suspend fun firebaseSignInWithGoogle(googleCredential: AuthCredential): Flow<Response<Boolean>> = flow {
         try {
             emit(Loading)
             val authResult = auth.signInWithCredential(googleCredential).await()
@@ -71,7 +86,7 @@ class AuthRepositoryImpl  @Inject constructor(
         }
     }
 
-    override suspend fun createUserInFirestore() = flow {
+    override suspend fun createUserInFirestore(): Flow<Response<Boolean>> = flow {
         try {
             emit(Loading)
             auth.currentUser?.apply {
@@ -88,6 +103,44 @@ class AuthRepositoryImpl  @Inject constructor(
         }
     }
 
+    override suspend fun signInWithEmailAndPassword(email: String, password: String): Flow<Response<Task<AuthResult>>> = flow{
+        try{
+            var _task: Task<AuthResult>?= null
+            auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task->
+                _task = task
+            }.await()
+
+            if(_task?.isSuccessful == true){
+                emit(Success(_task))
+            }else{
+                emit(Error(_task?.exception))
+            }
+        }catch (e: Exception){
+            emit(Error(e))
+        }
+
+    }
+
+    override suspend fun createAccountWithEmailAndPassword(
+        email: String,
+        password: String
+    ): Flow<Response<Task<AuthResult>>> = flow {
+        try{
+            var _task: Task<AuthResult>?= null
+            auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task->
+                _task = task
+            }.await()
+
+            if(_task?.isSuccessful == true){
+                emit(Success(_task))
+            }else{
+                emit(Error(_task?.exception))
+            }
+        }catch (e: Exception){
+            emit(Error(e))
+        }
+    }
+
     override fun getFirebaseAuthState() = callbackFlow  {
         val authStateListener = AuthStateListener { auth ->
             trySend(auth.currentUser == null)
@@ -98,7 +151,9 @@ class AuthRepositoryImpl  @Inject constructor(
         }
     }
 
-    override suspend fun signOut() = flow {
+
+
+    override suspend fun signOut(): Flow<Response<Boolean>> = flow {
         try {
             emit(Loading)
             auth.signOut()
@@ -109,7 +164,7 @@ class AuthRepositoryImpl  @Inject constructor(
         }
     }
 
-    override suspend fun revokeAccess() = flow {
+    override suspend fun revokeAccess(): Flow<Response<Boolean>> = flow {
         try {
             emit(Loading)
             auth.currentUser?.apply {
@@ -123,4 +178,5 @@ class AuthRepositoryImpl  @Inject constructor(
             emit(Error(e))
         }
     }
+
 }

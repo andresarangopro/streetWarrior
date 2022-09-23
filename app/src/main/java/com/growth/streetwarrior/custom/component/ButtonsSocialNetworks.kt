@@ -12,11 +12,10 @@ import com.growth.streetwarrior.R
 
 @Composable
 fun ButtonsSocialNetworks(loginWithGoogle:()-> Unit,
-                          loginWithGoogle1:()-> Unit,
-                          loginWithGoogle2:()-> Unit) {
+                          loginWithFacebook:()-> Unit) {
 
-   Button(
-        onClick =  loginWithGoogle,
+    Button(
+        onClick = loginWithGoogle,
         colors = ButtonDefaults
             .buttonColors(containerColor = MaterialTheme.colorScheme.onSecondary),
         modifier = Modifier
@@ -32,12 +31,13 @@ fun ButtonsSocialNetworks(loginWithGoogle:()-> Unit,
             contentDescription = "Favorite",
             modifier = Modifier
                 .size(20.dp)
-                .padding(end=8.dp)
+                .padding(end = 8.dp)
         )
         Text(text = stringResource(id = R.string.continue_with_google))
 
     }
 
+  /*
     Button(
         onClick = loginWithGoogle1,
         colors = ButtonDefaults
@@ -81,7 +81,7 @@ fun ButtonsSocialNetworks(loginWithGoogle:()-> Unit,
         )
         Text(text = stringResource(id = R.string.continue_with_apple))
 
-    }
+    }*/
 }
 
 @Preview

@@ -70,6 +70,7 @@ fun ContentPage(
                 color = colorResource(id = R.color.gray),
                 modifier = Modifier
                     .fillMaxWidth()
+                    .padding(15.dp, 0.dp)
                     .wrapContentSize(Alignment.Center)
             )
             Spacer(modifier = Modifier.height(24.dp))

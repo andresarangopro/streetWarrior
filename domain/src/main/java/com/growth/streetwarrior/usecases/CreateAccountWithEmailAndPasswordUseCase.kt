@@ -5,7 +5,7 @@ import com.growth.streetwarrior.repository.AuthRepository
 import javax.inject.Inject
 
 
-class LoginWithGoogleUseCase
+class CreateAccountWithEmailAndPasswordUseCase
 @Inject constructor(val authRepository: AuthRepository) {
-    suspend fun run() = authRepository.signUpWithGoogle()
+    suspend fun run(email: String, password: String) = authRepository.createAccountWithEmailAndPassword(email, password)
 }

@@ -1,16 +1,17 @@
 package com.growth.streetwarrior.custom.component
 
 import androidx.annotation.StringRes
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -23,12 +24,21 @@ data class ParamsMailAndPassword(
     val onPassChange : (String) -> Unit
 )
 
+data class ParamsCreateAccount(
+    @StringRes val title: Int,
+    val onMailChange : (String) -> Unit,
+    val onPassChange : (String) -> Unit,
+    val onPassVerifyChange : (String) -> Unit
+)
+
+
+
 @Composable
 fun EmailAndPassword(
     paramsMailAndPassword: ParamsMailAndPassword
 ) {
 
-
+    var passwordVisibility: Boolean by remember { mutableStateOf(false) }
     var mailStr by remember{
         mutableStateOf("")
     }
@@ -63,19 +73,29 @@ fun EmailAndPassword(
         }
     )
 
-    TextField(value = passStr, onValueChange = {
-        passStr = it
-        paramsMailAndPassword.onPassChange(passStr)
-    },
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 24.dp, vertical = 8.dp),
-        colors = TextFieldDefaults.textFieldColors(
-            containerColor = MaterialTheme.colorScheme.onSecondary
-        ),
-        placeholder = {
-            Text(text = stringResource(id = R.string.password))
-        }
+    TextFieldPassword(ParamsInputText(paramsMailAndPassword.onPassChange))
+}
+
+
+@Composable
+fun CreateAccount(
+    paramsMailAndPassword: ParamsCreateAccount
+) {
+    var passwordVisibility: Boolean by remember { mutableStateOf(false) }
+
+    var verifyPassStr by remember{
+        mutableStateOf("")
+    }
+
+    EmailAndPassword(paramsMailAndPassword = ParamsMailAndPassword(
+        paramsMailAndPassword.title,
+        paramsMailAndPassword.onMailChange,
+        paramsMailAndPassword.onPassChange)
     )
+
+    Spacer(modifier = Modifier.height(8.dp))
+
+    TextFieldPassword(ParamsInputText(paramsMailAndPassword.onPassVerifyChange))
+
 }
 

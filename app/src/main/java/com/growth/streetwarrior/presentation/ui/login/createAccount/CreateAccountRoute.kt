@@ -1,7 +1,7 @@
 package com.growth.streetwarrior.presentation.ui.login.createAccount
 
-import android.util.Log
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -19,9 +19,7 @@ import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavType
 import androidx.navigation.navArgument
 import com.growth.streetwarrior.R
-import com.growth.streetwarrior.custom.component.ButtonsSocialNetworks
-import com.growth.streetwarrior.custom.component.EmailAndPassword
-import com.growth.streetwarrior.custom.component.ParamsMailAndPassword
+import com.growth.streetwarrior.custom.component.*
 import com.growth.streetwarrior.presentation.KEY_CONTENT_PAGE_INDEX
 import com.growth.streetwarrior.presentation.navigation.NavRoute
 import com.growth.streetwarrior.presentation.navigation.getOrThrow
@@ -66,11 +64,17 @@ fun ContentPage(
             mutableStateOf("")
         }
 
-        val paramsMailAndPass = ParamsMailAndPassword(
+        var verifyPass by remember {
+            mutableStateOf("")
+        }
+
+        val paramsMailAndPass = ParamsCreateAccount(
             title = R.string.create_account,
             onMailChange = {mail = it},
-            onPassChange = {pass = it}
+            onPassChange = {pass = it},
+            onPassVerifyChange = {verifyPass = it},
         )
+
 
         Column(
             verticalArrangement = Arrangement.Center,
@@ -81,12 +85,17 @@ fun ContentPage(
 
         ) {
 
-            EmailAndPassword(
+            CreateAccount(
                 paramsMailAndPass
             )
 
             Button(
                 onClick = {
+                      viewModel.createAccount(ParamsCreateAccountViewModel(
+                          mail,
+                          pass,
+                          verifyPass
+                      ))
                 },
                 colors = ButtonDefaults
                     .buttonColors(containerColor = MaterialTheme.colorScheme.primary),
@@ -112,6 +121,9 @@ fun ContentPage(
                 modifier = Modifier
                     .fillMaxWidth()
                     .wrapContentSize(Alignment.Center)
+                    .clickable(enabled = true) {
+                        viewModel.toSingInScreen()
+                    }
             )
 
             Divider(
@@ -123,7 +135,6 @@ fun ContentPage(
 
             ButtonsSocialNetworks(
                 { },
-                {},
                 {}
             )
         }

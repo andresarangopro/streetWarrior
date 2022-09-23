@@ -2,6 +2,7 @@ package com.growth.streetwarrior.presentation.ui.login.signIn
 
 
 import android.app.Activity.RESULT_OK
+import android.content.Intent
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -12,6 +13,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -29,11 +31,15 @@ import com.google.android.gms.tasks.Task
 import com.growth.streetwarrior.R
 import com.growth.streetwarrior.custom.component.*
 import com.growth.streetwarrior.presentation.KEY_CONTENT_PAGE_INDEX
+import com.growth.streetwarrior.presentation.States
 import com.growth.streetwarrior.presentation.navigation.NavRoute
 import com.growth.streetwarrior.presentation.navigation.getOrThrow
+import com.growth.streetwarrior.presentation.observe
+import com.growth.streetwarrior.presentation.ui.groupmotorbikershandle.MainActivity
 import com.growth.streetwarrior.presentation.ui.theme.GrayLight
 import com.growth.streetwarrior.presentation.ui.theme.GrayLight_2
 import com.growth.streetwarrior.presentation.ui.theme.StreetWarriorTheme
+
 
 object SignInRoute : NavRoute<SignInViewModel> {
     override val route = "signIn/{$KEY_CONTENT_PAGE_INDEX}/"
@@ -64,20 +70,24 @@ fun ContentPage(
 
     val mContext = LocalContext.current
 
-    StreetWarriorTheme{
-        var mail by remember{
+    StreetWarriorTheme {
+        var mail by remember {
             mutableStateOf("")
         }
 
         var pass by remember {
             mutableStateOf("")
         }
+        var loader by remember {
+            mutableStateOf(false)
+        }
 
         val paramsMailAndPass = ParamsMailAndPassword(
             title = R.string.sign_in,
-            onMailChange = {mail = it},
-            onPassChange = {pass = it}
+            onMailChange = { mail = it },
+            onPassChange = { pass = it }
         )
+
         val startForResult =
             rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
                 if (result.resultCode == RESULT_OK) {
@@ -85,9 +95,31 @@ fun ContentPage(
                     if (result.data != null) {
                         val task: Task<GoogleSignInAccount> =
                             GoogleSignIn.getSignedInAccountFromIntent(intent)
-                            viewModel.finishLogin(task, mContext)
+                        viewModel.finishLogin(task)
                     }
                 }
+            }
+
+
+        fun validateStates(event: States<StatesSignInViewModel>?) {
+            event?.getContentIfNotHandled()?.let { navigation ->
+                when (navigation) {
+                    is StatesSignInViewModel.OnIntentGoogleSignIn -> navigation.run{
+                        startForResult.launch(intent)
+                    }
+                    is StatesSignInViewModel.ToMainActivity ->{
+                        mContext.startActivity(Intent(mContext, MainActivity::class.java))
+                    }
+
+                    is StatesSignInViewModel.IsLoading ->{
+                        loader = true
+                    }
+                }
+            }
+        }
+
+        with(viewModel){
+            LocalLifecycleOwner.current.observe(states,::validateStates)
         }
 
         Column(
@@ -102,10 +134,9 @@ fun ContentPage(
             EmailAndPassword(
                 paramsMailAndPass
             )
-
             Button(
                 onClick = {
-                     startForResult.launch(viewModel.clientFirebase.signInIntent )
+                    viewModel.loginWithEmailAndPassword(paramsMailAndPass)
                 },
                 colors = ButtonDefaults
                     .buttonColors(containerColor = MaterialTheme.colorScheme.primary),
@@ -141,13 +172,18 @@ fun ContentPage(
             )
 
             ButtonsSocialNetworks(
-                { startForResult.launch( viewModel.clientFirebase.signInIntent )},
-                { startForResult.launch( viewModel.clientFirebase.signInIntent )},
-                { startForResult.launch( viewModel.clientFirebase.signInIntent )}
+                { viewModel.loginWithGoogle()},
+                { viewModel.loginWithGoogle()}
             )
+        }
+
+        if(loader){
+            ProgressBar()
         }
     }
 }
+
+
 
 @Preview(showBackground = true)
 @Composable

@@ -69,6 +69,7 @@ dependencies {
     implementation (Libs.AndroidX.Activity.activityCompose)
     implementation (Libs.AndroidX.appcompat)
     implementation (Libs.AndroidX.Compose.runtime)
+    implementation (Libs.AndroidX.Compose.runtimeLiveData)
     implementation (Libs.AndroidX.Compose.material)
     implementation (Libs.AndroidX.Compose.foundation)
     implementation (Libs.AndroidX.Compose.layout)

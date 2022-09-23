@@ -43,4 +43,6 @@ dependencies {
     implementation (Libs.Kotlin.Coroutines.android)
     implementation (Libs.Firebase.firestore)
     testImplementation(Libs.JUnit.junit)
+
+    implementation (Libs.Hilt.android)
 }
