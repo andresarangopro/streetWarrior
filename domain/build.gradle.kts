@@ -1,4 +1,5 @@
-import com.growth.buildsrc.Libs
+import com.bike.buildsrc.Libs
+import com.bike.buildsrc.implementationOwn
 
 plugins {
     id("com.android.library")
@@ -43,6 +44,8 @@ dependencies {
     implementation (Libs.Kotlin.Coroutines.android)
     implementation (Libs.Firebase.firestore)
     testImplementation(Libs.JUnit.junit)
+
+    implementationOwn(Libs.retrofitLibraries)
 
     implementation (Libs.Hilt.android)
 }

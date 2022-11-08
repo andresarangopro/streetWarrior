@@ -1,4 +1,4 @@
-import com.growth.buildsrc.Libs
+import com.bike.buildsrc.Libs
 
 plugins {
     id ("com.android.library")

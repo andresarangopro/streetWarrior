@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-import com.growth.buildsrc.Libs
-import com.growth.buildsrc.Urls
-import com.growth.buildsrc.Versions
+import com.bike.buildsrc.Libs
+import com.bike.buildsrc.Urls
+import com.bike.buildsrc.Versions
 
 buildscript {
     repositories {

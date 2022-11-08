@@ -1,4 +1,5 @@
-import com.growth.buildsrc.Libs
+import com.bike.buildsrc.Libs
+import com.bike.buildsrc.implementationOwn
 
 plugins {
     id ("com.android.application")
@@ -12,7 +13,7 @@ plugins {
 android {
     compileSdk = 32
     defaultConfig {
-        applicationId =  "com.growth.streetwarrior"
+        applicationId =  "com.bike.streetwarrior"
         minSdk = Libs.ConfigData.minSdkVersion
         targetSdk = Libs.ConfigData.targetSdkVersion
         versionCode = Libs.ConfigData.versionCode
@@ -95,6 +96,7 @@ dependencies {
     implementation(project(mapOf("path" to ":domain")))
     implementation(project(mapOf("path" to ":data")))
     implementation("com.google.android.material:material:1.4.0")
+    implementationOwn(Libs.retrofitLibraries)
     testImplementation(Libs.JUnit.junit)
 
     debugImplementation (Libs.AndroidX.Compose.tooling)

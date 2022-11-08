@@ -1,41 +1,70 @@
 {
   "project_info": {
-    "project_number": "765144242685",
-    "project_id": "streetwarrior-176ad",
-    "storage_bucket": "streetwarrior-176ad.appspot.com"
+    "project_number": "111153412146",
+    "project_id": "streetwarrior-c5141",
+    "storage_bucket": "streetwarrior-c5141.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:765144242685:android:629e91849d313a9e15a194",
+        "mobilesdk_app_id": "1:111153412146:android:0bc351b93208f2bb06a42b",
         "android_client_info": {
-          "package_name": "com.growth.streetwarrior"
+          "package_name": "com.bike.streetwarrior"
         }
       },
       "oauth_client": [
         {
-          "client_id": "765144242685-l2orclaas3l5akcbkcql509e1he2hrsk.apps.googleusercontent.com",
+          "client_id": "111153412146-ltbducqq4ll04nstsj1opvi7fhg0v9sr.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.growth.streetwarrior",
-            "certificate_hash": "629323a7d82e02377846a1db8d9bc0235c05e351"
+            "package_name": "com.bike.streetwarrior",
+            "certificate_hash": "a4a843252e86e1749c9375acfc2408f88cdefd91"
           }
         },
         {
-          "client_id": "765144242685-pptfrqo9l68mn4qi54vn00kijvbfjvsu.apps.googleusercontent.com",
+          "client_id": "111153412146-12207t42takjq0k3n5scs53ghooel1c2.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAbQa-rPdm6bYuMcFgSLgUJRjWvPAksrTI"
+          "current_key": "AIzaSyBPDMg58BdY46an_5t9vYfo656IWvL3yeM"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "765144242685-pptfrqo9l68mn4qi54vn00kijvbfjvsu.apps.googleusercontent.com",
+              "client_id": "111153412146-12207t42takjq0k3n5scs53ghooel1c2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:111153412146:android:4f7ed0570976f91306a42b",
+        "android_client_info": {
+          "package_name": "com.growth.streetwarrior"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "111153412146-12207t42takjq0k3n5scs53ghooel1c2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPDMg58BdY46an_5t9vYfo656IWvL3yeM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "111153412146-12207t42takjq0k3n5scs53ghooel1c2.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

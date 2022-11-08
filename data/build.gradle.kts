@@ -1,4 +1,5 @@
-import com.growth.buildsrc.Libs
+import com.bike.buildsrc.Libs
+import com.bike.buildsrc.implementationOwn
 
 plugins {
     id("com.android.library")
@@ -49,4 +50,5 @@ dependencies {
     implementation (Libs.Kotlin.Coroutines.playServices)
     implementation (Libs.Hilt.android)
     testImplementation(Libs.JUnit.junit)
+    implementationOwn(Libs.retrofitLibraries)
 }
